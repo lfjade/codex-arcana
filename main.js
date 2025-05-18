@@ -7,6 +7,8 @@ require('dotenv').config()
 async function createMainWindow(){
     const mainWindow = new BrowserWindow({
         webPreferences: {
+            width: 800,
+            height: 600,
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
             nodeIntegration: false,

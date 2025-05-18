@@ -3,3 +3,63 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html, body{
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: url(img/backgorund.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(img/279fb3fa-262c-4598-804b-bf303022e16c.png);
+    min-height: 90vh;
+    width: 42vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    color:antiquewhite;
+    overflow: auto;
+}
+
+#grimorio{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(img/ChatGPT\ Image\ 18\ de\ mai.\ de\ 2025\,\ 07_15_01.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 90vh;
+    width: 90vw;
+    color:antiquewhite;
+    overflow: auto;
+    position: relative;
+    gap: 20px;
+}
+
+.pagina{
+    display:flex;
+    flex-direction: column;
+    width: 35%;
+    height: 80%;
+}
+h3{
+    text-align: center;
+}

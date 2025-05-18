@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () =>{
         if (event.key==='Enter'){
             const expectedPW = await window.secure.getPw()
             if (pwInput.value === expectedPW){
-                alert ("in")
+                 window.location.href = 'grimorio.html'
             }
         }
     })
