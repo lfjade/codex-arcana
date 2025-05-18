@@ -26,15 +26,15 @@ ipcMain.handle('get-password', () => {
 
 app.whenReady().then(createMainWindow)
 
-ipcMain.handle('abrir-arquivo', async () =>{
+ipcMain.handle('abrir-feitico', async () =>{
     try {
         const result = await dialog.showOpenDialog({
-            filters: [{name: 'Arquivos', extensions: ['txt', 'json']}],
+            filters: [{name: 'Arquivos', extensions: ['txt']}],
             properties: ['openFile']
 
         })
 
-        if (result.canceled) return {cancelado:true}
+        if (result.canceled || result.filePaths.length===0) return {cancelado:true}
 
         const caminho = result.filePaths[0]
         const conteudo = fs.readFileSync(caminho, 'utf-8')
@@ -44,6 +44,30 @@ ipcMain.handle('abrir-arquivo', async () =>{
     }
 })
 
+ipcMain.handle('salvar-feitico', async (_, content) => {
+    try {
+        const result = await dialog.showSaveDialog({
+            filters: [{name: 'Arquivos', extensions:['txt']}],
+            defaultPath: 'feitico.txt'
+        })
+        if (result.canceled) return {cancelado: true}
+        fs.writeFileSync(result.filePath, content, 'utf-8')
+        return {sucesso:true}
+    } catch (erro){
+        return {erro: erro.message}
+    }
+})
+
+const pastaFeiticos = path.join(__dirname, 'feiticos')
+
+ipcMain.handle('listar-feiticos', async () => {
+    try {
+        const arquivos = fs.readdirSync(pastaFeiticos).filter(nome => nome.endsWith('.txt'))
+        return arquivos
+    } catch (erro){
+        return {erro: erro.message}
+    }
+})
 
 
 app.on('window-all-closed', () => {

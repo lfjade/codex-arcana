@@ -63,3 +63,19 @@ body {
 h3{
     text-align: center;
 }
+
+#feitico {
+  max-width: 100%;
+  max-height: 300px; /* ou o valor que preferir */
+  overflow: auto;
+  white-space: pre-wrap; /* Quebra linhas em espaços */
+  word-break: break-word; /* Quebra palavras longas */
+  padding: 1em;
+  border: 1px solid antiquewhite;
+  color: antiquewhite;
+  margin-top: 1em;
+}
+
+#salvar-feitico{
+    display: none
+}

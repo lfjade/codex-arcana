@@ -7,3 +7,10 @@ contextBridge.exposeInMainWorld('versions', {
 contextBridge.exposeInMainWorld('secure',{
     getPw: async () => await ipcRenderer.invoke('get-password')
 })
+
+contextBridge.exposeInMainWorld('api', {
+    abrirArquivo: () => ipcRenderer.invoke('abrir-feitico'),
+    salvarArquivo: (content) => ipcRenderer.invoke('salvar-feitico', content),
+    listarFeiticos: () => ipcRenderer.invoke('listar-feiticos')
+
+})

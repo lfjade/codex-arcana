@@ -10,11 +10,17 @@
     <div id = "grimorio">
         <div class = "pagina"> 
             <h3>Feitiços conhecidos</h3>
-            <!-- criar tabela dinâmica com nomes dos arquivos; ao clicar, exibe o feitiço-->
+            <!-- criar tabela dinâmica com nomes dos arquivos; ao clicar, exibe o feitiço e permite editar-->
+             <ul id = "lista-de-feiticos"></ul>
         </div>
         <div class = "pagina">
             <h3>Adicionar novo feitiço</h3>
-            <!-- aqui abre novo arquivo, com a opção "editar" --> 
+            <!-- aqui abre novo arquivo -->
+            <button onclick="abrirArquivo()">Procurar</button>
+            <textarea id="feitico" rows="15" cols="50" style="font-family: 'Georgia', serif; color: antiquewhite; background: transparent; border: none; resize: vertical;"></textarea>
+            <button id = "salvar-feitico" onclick="salvarArquivo()">Salvar Feitiço</button>
+
+
         </div>
     </div>
     <script src = "renderer.js"></script>
