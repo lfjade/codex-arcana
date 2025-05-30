@@ -6,9 +6,9 @@ require('dotenv').config()
 
 async function createMainWindow(){
     const mainWindow = new BrowserWindow({
+        width: 800,
+        height: 600,
         webPreferences: {
-            width: 800,
-            height: 600,
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
             nodeIntegration: false,
@@ -16,6 +16,19 @@ async function createMainWindow(){
         }
     })
     await mainWindow.loadFile('entrada.html')
+
+    ipcMain.on('ir-para-pagina', (event, pagina)=>{
+    if (mainWindow && pagina){
+        mainWindow.loadFile(pagina)
+    }
+
+    ipcMain.on('voltar-pagina', () =>{
+        const janela = BrowserWindow.getFocusedWindow()
+        if (janela && janela.webContents.navigationHistory.canGoBack){
+            janela.webContents.navigationHistory.goBack
+        }
+    })
+})
 
     
 }
@@ -68,6 +81,8 @@ ipcMain.handle('listar-feiticos', async () => {
         return {erro: erro.message}
     }
 })
+
+
 
 ipcMain.on('fechar', () =>{
     app.quit()

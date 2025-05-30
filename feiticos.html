@@ -4,23 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>As within, so without.</title>
-    <link rel = "stylesheet" href =style.css>
+    <link rel = "stylesheet" href =styleHome.css>
+    <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id = "grimorio">
+    <div id="hero-grimorio">
         <div class = "pagina"> 
-            <h3>Feitiços conhecidos</h3>
-            <!-- criar tabela dinâmica com nomes dos arquivos; ao clicar, exibe o feitiço e permite editar-->
+            <h1>feitiços</h1>
              <ul id = "lista-de-feiticos"></ul>
+             <button id = "novo-feitico">novo</button>
+             <button id = "proxima-pagina">próxima página</button>
         </div>
         <div class = "pagina">
-            <h3>Adicionar novo feitiço</h3>
-            <!-- aqui abre novo arquivo -->
-            <button onclick="abrirArquivo()">Procurar</button>
-            <textarea id="feitico" rows="15" cols="50" style="font-family: 'Georgia', serif; color: antiquewhite; background: transparent; border: none; resize: vertical;"></textarea>
-            <button id = "salvar-feitico" onclick="salvarArquivo()">Salvar Feitiço</button>
-
-
+            <h1>localizar</h1>
+            <form>
+                <label for="componentes">por componentes</label>
+                <select id = "componentes">
+                    <option value = "1">opção 1</option>
+                    <option value = "2">opção 2</option>
+                    <option value = "3">opção 3</option>
+                </select>
+                <label for="tags">por tags</label>
+                <select id = "tags">
+                    <option value = "1">opção 1</option>
+                    <option value = "2">opção 2</option>
+                    <option value = "3">opção 3</option>
+                </select>
+            </form>
+            <button id = "voltar">voltar</button>
         </div>
     </div>
     <script src = "renderer.js"></script>

@@ -1,5 +1,3 @@
-const { ipcRenderer } = require("electron")
-
 window.addEventListener('DOMContentLoaded', async () =>{
 
     const pwInput = document.getElementById('pw')
@@ -18,6 +16,26 @@ window.addEventListener('DOMContentLoaded', async () =>{
         })
     }
     carregarFeiticos()
+
+    const btnFechar = document.getElementById('fechar')
+    if (btnFechar){
+        btnFechar.addEventListener('click', () =>{
+        window.api.fecharApp()
+        })
+    }
+    const btnVoltar = document.getElementById('voltar')
+    if (btnVoltar){
+        btnVoltar.addEventListener('click', () =>{
+        window.nav.voltar()
+        })
+    }
+    
+    const linkFeiticos = document.getElementById('link-feiticos')
+    if (linkFeiticos){
+        linkFeiticos.addEventListener('click', () =>{
+        window.api.irParaPagina('feiticos.html')
+        })
+    }
     
 })
 
@@ -47,6 +65,8 @@ async function salvarArquivo(){
     }
 }
 
+
+
 async function carregarFeiticos() {
     const listaDeFeiticos = document.getElementById('lista-de-feiticos')
     const arquivos = await window.api.listarFeiticos()
@@ -66,8 +86,5 @@ async function carregarFeiticos() {
         li.textContent = el.replace('.txt', '')
         listaDeFeiticos.appendChild(li)
     });
+   
 }
-
-document.getElementById('fechar').addEventListener('click', () =>{
-    window.api.fecharApp()
-})

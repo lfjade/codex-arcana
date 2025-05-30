@@ -69,7 +69,21 @@ button {
   font-family: 'Inknut Antiqua', serif;
   color: white;
   background: none;
+  cursor: pointer;
   position: absolute;
+}
+
+#fechar, #voltar{   
   bottom:0;
   right:0;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
 }

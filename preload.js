@@ -1,4 +1,4 @@
-const {contextBridge, ipcRenderer} = require('electron')
+const {contextBridge, ipcRenderer, ipcMain} = require('electron')
 contextBridge.exposeInMainWorld('versions', {
     node: () => process.versions.node,
     electron: () => process.versions.electron
@@ -12,6 +12,11 @@ contextBridge.exposeInMainWorld('api', {
     abrirArquivo: () => ipcRenderer.invoke('abrir-feitico'),
     salvarArquivo: (content) => ipcRenderer.invoke('salvar-feitico', content),
     listarFeiticos: () => ipcRenderer.invoke('listar-feiticos'),
-    fecharApp: () => ipcRenderer.send('fechar')
+    fecharApp: () => ipcRenderer.send('fechar'),
+    irParaPagina: (pagina) => ipcRenderer.send('ir-para-pagina', pagina)
 
+})
+
+contextBridge.exposeInMainWorld('nav', {
+    voltar: () =>ipcRenderer.send('voltar-pagina')
 })
