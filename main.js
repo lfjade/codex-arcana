@@ -15,7 +15,7 @@ async function createMainWindow(){
             additionalArguments: [`--PW=${process.env.PW}`]
         }
     })
-    await mainWindow.loadFile('index.html')
+    await mainWindow.loadFile('entrada.html')
 
     
 }
@@ -69,6 +69,9 @@ ipcMain.handle('listar-feiticos', async () => {
     }
 })
 
+ipcMain.on('fechar', () =>{
+    app.quit()
+})
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin'){

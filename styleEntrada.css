@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    font-family: 'Inknut Antiqua', serif;
+    line-height: 1.0;
+    
+
+    background-image: 
+        url(img/279fb3fa-262c-4598-804b-bf303022e16c.png),
+        url(img/backgorund.png);   
+    background-size: contain, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-position: center, center;
+    height: 100vh;
+    width: 100vw;
+    color:#fff
+}
+
+#content {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 330px;
+    padding-left: 14px;
+}
+
+
+#pw{
+    background-color: #000000;
+    color: #dc143c;
+    border: none;
+    font-family: 'Inknut Antiqua', serif;
+    text-align: center;
+    border-radius: 5px;
+    bottom: -30vh;
+    left: 2vw
+}

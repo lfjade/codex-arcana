@@ -1,14 +1,20 @@
-window.addEventListener('DOMContentLoaded', () =>{
+const { ipcRenderer } = require("electron")
+
+window.addEventListener('DOMContentLoaded', async () =>{
 
     const pwInput = document.getElementById('pw')
+    const expectedPw = await window.secure.getPw()
+    let timeout
+
     if (pwInput){
-        pwInput.addEventListener('keydown', async function(event){
-            if (event.key==='Enter'){
-                const expectedPW = await window.secure.getPw()
-                if (pwInput.value === expectedPW){
-                    window.location.href = 'grimorio.html'
+        pwInput.addEventListener('input', () =>{
+            clearTimeout(timeout)
+            timeout=setTimeout(() =>{
+                if (pwInput.value === expectedPw){
+                    window.location.href='home.html'
                 }
-            }
+
+            }, 500)
         })
     }
     carregarFeiticos()
@@ -61,3 +67,7 @@ async function carregarFeiticos() {
         listaDeFeiticos.appendChild(li)
     });
 }
+
+document.getElementById('fechar').addEventListener('click', () =>{
+    window.api.fecharApp()
+})

@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('secure',{
 contextBridge.exposeInMainWorld('api', {
     abrirArquivo: () => ipcRenderer.invoke('abrir-feitico'),
     salvarArquivo: (content) => ipcRenderer.invoke('salvar-feitico', content),
-    listarFeiticos: () => ipcRenderer.invoke('listar-feiticos')
+    listarFeiticos: () => ipcRenderer.invoke('listar-feiticos'),
+    fecharApp: () => ipcRenderer.send('fechar')
 
 })
