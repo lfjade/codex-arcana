@@ -17,20 +17,34 @@
         </div>
         <div class = "pagina">
             <h1>localizar</h1>
-            <form>
-                <label for="componentes">por componentes</label>
-                <select id = "componentes">
-                    <option value = "1">opção 1</option>
-                    <option value = "2">opção 2</option>
-                    <option value = "3">opção 3</option>
-                </select>
-                <label for="tags">por tags</label>
-                <select id = "tags">
-                    <option value = "1">opção 1</option>
-                    <option value = "2">opção 2</option>
-                    <option value = "3">opção 3</option>
-                </select>
+            <form id = "localizar-feiticos">
+                <div id="form-linha">
+                    <label for="nome">por nome</label>
+                    <input type="text" id ="nome" placeholder = "digite...">
+                </div>
+                <div id = "form-linha">
+                    <label for="componentes">por componentes</label>
+                    <select id = "componentes">
+                        <option value = "" disabled selected>selecione...</option>
+                        <option value = "1">opção 1</option>
+                        <option value = "2">opção 2</option>
+                        <option value = "3">opção 3</option>
+                    </select>
+                </div>
+                <div id = "form-linha">
+                    <label for="tags">por tags</label>
+                    <select id = "tags">
+                        <option value = "" disabled selected>selecione...</option>
+                        <option value = "1">opção 1</option>
+                        <option value = "2">opção 2</option>
+                        <option value = "3">opção 3</option>
+                    </select>
+                </div>
+                <button class = "botao-form">pesquisar</button>
             </form>
+            <div class= "resultado-pesquisa">
+                <button id = "proxima-pagina">próxima página</button>
+            </div>
             <button id = "voltar">voltar</button>
         </div>
     </div>

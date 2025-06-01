@@ -24,8 +24,8 @@ async function createMainWindow(){
 
     ipcMain.on('voltar-pagina', () =>{
         const janela = BrowserWindow.getFocusedWindow()
-        if (janela && janela.webContents.navigationHistory.canGoBack){
-            janela.webContents.navigationHistory.goBack
+        if (janela && janela.webContents.navigationHistory.canGoBack()){
+            janela.webContents.navigationHistory.goBack()
         }
     })
 })

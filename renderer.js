@@ -36,6 +36,13 @@ window.addEventListener('DOMContentLoaded', async () =>{
         window.api.irParaPagina('feiticos.html')
         })
     }
+
+    const btnNovoFeitico = document.getElementById('novo-feitico')
+    if (btnNovoFeitico){
+        btnNovoFeitico.addEventListener('click', () => {
+            window.api.irParaPagina('novoFeitico.html')
+        })
+    }
     
 })
 
