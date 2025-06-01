@@ -81,7 +81,7 @@ button {
   right:0;
 }
 
-#novo-feitico{
+#registrar, #novo-feitico{
   bottom:0;
   left:0;
 }
@@ -107,8 +107,8 @@ form{
   font-size: small;
 }
 
-#form-linha label, select, input{
-  flex:1
+#componentes, #tags, #form-linha label, select, input{
+  flex:1;
 }
 
 input[type=text], select{
@@ -136,15 +136,48 @@ input[type=text], select{
   margin: 10px;
 }
 
-#ritualistica{
+#componentes, #tags, #ritualistica{
   background: transparent;
   border: #fff 1px solid;
   border-radius: 5px;
   margin: 5px;
 }
 
+#componentes, #tags{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+
 .label-centralizado{
   display: block;
   text-align: center;
+}
+
+#titulo{
+  height: auto;
+  line-height: normal;
+  flex:initial;
+  height: auto;
+  font-family: 'Inknut Antiqua', serif;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 5px;
+  font-size: large;
+  padding: 0px 5px;
+}
+
+#inputComponentes, #inputTags{
+  background-color: white;
+  color: #6B512E;
+  text-align: center;
+  border: 1px solid #6B512E;
+  padding: 5px;
+  border-radius: 5px;
+  width: 90%;
+  flex: 0 0 auto;
 }
 
