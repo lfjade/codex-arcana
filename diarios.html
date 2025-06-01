@@ -6,20 +6,52 @@
     <title>As within, so without.</title>
     <link rel = "stylesheet" href =styleHome.css>
     <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
-    
 </head>
 <body>
-
-<div id="hero-grimorio">
-  <div class="pagina" id="um">
-    <h1>p2</h1>
-  </div>
-  <div class="pagina">
-    <h1>p2</h1>
-
-    <button id = "fechar">fechar grimório</button>
-  </div>
-</div>
+    <div id="hero-grimorio">
+        <div class = "pagina"> 
+            <h1>diarios</h1>
+             <ul id = "lista-de-diarios"></ul>
+             <button id = "novo-diario">novo</button>
+             <button id = "proxima-pagina">próxima página</button>
+        </div>
+        <div class = "pagina">
+            <h1>localizar</h1>
+            <form id = "localizar-feiticos">
+                <div id="form-linha">
+                    <label for="nome">por nome</label>
+                    <input type="text" id ="nome" placeholder = "digite...">
+                </div>
+                <div id = "form-linha">
+                    <label for="componentes">por componentes</label>
+                    <select id = "componentes">
+                        <option value = "" disabled selected>selecione...</option>
+                        <option value = "1">opção 1</option>
+                        <option value = "2">opção 2</option>
+                        <option value = "3">opção 3</option>
+                    </select>
+                </div>
+                <div id = "form-linha">
+                    <label for="tags">por tags</label>
+                    <select id = "tags">
+                        <option value = "" disabled selected>selecione...</option>
+                        <option value = "1">opção 1</option>
+                        <option value = "2">opção 2</option>
+                        <option value = "3">opção 3</option>
+                    </select>
+                </div>
+                <div id = "form-linha">
+                    <label for = "por-data">por data</label>
+                    <input type = "date">
+                </div>
+                <button class = "botao-form">pesquisar</button>
+            </form>
+            <div class= "resultado-pesquisa">
+                <button id = "proxima-pagina">próxima página</button>
+            </div>
+            <button id = "voltar">voltar</button>
+        </div>
+    </div>
     <script src = "renderer.js"></script>
 </body>
 </html>

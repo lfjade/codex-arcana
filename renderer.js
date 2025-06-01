@@ -37,6 +37,13 @@ window.addEventListener('DOMContentLoaded', async () =>{
         })
     }
 
+    const linkDiarios = document.getElementById('link-diarios')
+    if (linkDiarios){
+        linkDiarios.addEventListener('click', () => {
+            window.api.irParaPagina('diarios.html')
+        } )
+    }
+
     const btnNovoFeitico = document.getElementById('novo-feitico')
     if (btnNovoFeitico){
         btnNovoFeitico.addEventListener('click', () => {
