@@ -128,7 +128,7 @@ input[type=text], select{
   padding: 0px 5px;
 }
 
-.resultado-pesquisa{
+.resultado-pesquisa, #conteudo-feitico, #conteudo-diario{
   border: white solid 1px;
   border-radius: 5px;
   position: relative;
@@ -136,12 +136,16 @@ input[type=text], select{
   margin: 10px;
 }
 
-#componentes, #tags, #ritualistica, #clame-a-senhora-da-noite, #resposta-hecate{
+#componentes, #tags, #ritualistica, #clame-a-senhora-da-noite, #resposta-hecate, #conteudo-feitico, #conteudo-diario{
   background: transparent;
   border: #fff 1px solid;
   border-radius: 5px;
   margin: 5px;
   font-family: 'Inknut Antiqua', serif;
+  font-size: smaller;
+  line-height: 1.5;
+  white-space: pre-wrap;
+
 }
 
 #resposta-hecate{

@@ -142,6 +142,24 @@ ipcMain.handle('ler-feitico', async (_, nomeArquivo) =>{
     }
 })
 
+ipcMain.handle('ler-diario', async (_, nomeArquivo) => {
+    try {
+        if (!/^[\w\- ]+\.txt$/.test(nomeArquivo)){
+            throw new Error ('Nome de arquivo inválido.')
+        }
+
+        const caminhoCompleto = path.join(pastaDiarios, nomeArquivo)
+
+        if (!fs.existsSync(caminhoCompleto)){
+            throw new Error('Arquivo não encontrado.')
+        }
+        const conteudo = fs.readFileSync(caminhoCompleto, 'utf-8')
+        return conteudo
+    } catch (erro){
+        return {erro: erro.message}
+    }
+})
+
 
 
 ipcMain.on('fechar', () =>{

@@ -17,7 +17,8 @@ contextBridge.exposeInMainWorld('api', {
     listarDiarios: () => ipcRenderer.invoke('listar-diarios'),
     fecharApp: () => ipcRenderer.send('fechar'),
     irParaPagina: (pagina) => ipcRenderer.send('ir-para-pagina', pagina),
-    lerFeitico: (nomeArquivo) => ipcRenderer.invoke('ler-feitico', nomeArquivo)
+    lerFeitico: (nomeArquivo) => ipcRenderer.invoke('ler-feitico', nomeArquivo),
+    lerDiario: (nomeArquivo) => ipcRenderer.invoke('ler-diario', nomeArquivo)
 
 })
 

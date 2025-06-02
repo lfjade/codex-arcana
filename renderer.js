@@ -75,6 +75,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
         if (nomeFeitico){
             try {
                 const texto = await window.api.lerFeitico(`${nomeFeitico}.txt`)
+                titulo.textContent=nomeFeitico
                 conteudo.textContent = texto
             } catch (erro){
                 conteudo.textContent = 'Erro ao carregar feitiço.'
@@ -82,6 +83,27 @@ window.addEventListener('DOMContentLoaded', async () =>{
             }
         } else {
             conteudo.textContent = 'Feitiço não especificado.'
+        }
+    }
+
+    if (window.location.pathname.includes('exibirDiarios.html')){
+        const params = new URLSearchParams(window.location.search)
+        const nomeDiario = params.get('diario')
+
+        const titulo = document.getElementById('titulo-diario')
+        const conteudo = document.getElementById('conteudo-diario')
+
+        if (nomeDiario){
+            try{
+                const texto = await window.api.lerDiario(`${nomeDiario}.txt`)
+                titulo.textContent=nomeDiario
+                conteudo.textContent=texto
+            } catch (erro){
+                conteudo.textContent = 'Erro ao carregar diário.'
+                console.error(erro)
+            } 
+        } else {
+            conteudo.textContent = 'Diário não especificado.'
         }
     }
 })
@@ -168,7 +190,14 @@ async function carregarDiarios(){
 
     arquivos.forEach(el => {
         const li = document.createElement('li')
-        li.textContent = el.replace('.txt', '')
+        const nomeDiario = el.replace('.txt', '')
+        const link = document.createElement('a')
+
+        link.textContent=nomeDiario
+        link.href=`exibirDiarios.html?diario=${encodeURIComponent(nomeDiario)}`
+        link.style.textDecoration='none'
+
+        li.appendChild(link)
         listaDeDiarios.appendChild(li)
     })
 }
