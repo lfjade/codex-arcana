@@ -22,14 +22,14 @@ async function createMainWindow(){
         mainWindow.loadFile(pagina)
     }
 
-    ipcMain.on('voltar-pagina', () =>{
-        const janela = BrowserWindow.getFocusedWindow()
-        if (janela && janela.webContents.navigationHistory.canGoBack()){
-            janela.webContents.navigationHistory.goBack()
-        }
-    })
 })
 
+ipcMain.on('voltar-pagina', () =>{
+    const janela = BrowserWindow.getFocusedWindow()
+    if (janela && janela.webContents.navigationHistory.canGoBack()){
+        janela.webContents.navigationHistory.goBack()
+    }
+})
     
 }
 
@@ -120,6 +120,25 @@ ipcMain.handle('listar-diarios', async () =>{
         return arquivos
     } catch (erro){
         return{erro: erro.message}
+    }
+})
+
+ipcMain.handle('ler-feitico', async (_, nomeArquivo) =>{
+    try {
+        if (!/^[\w\- ]+\.txt$/.test(nomeArquivo)) {
+            throw new Error('Nome de arquivo inválido.')
+        }
+
+        const caminhoCompleto = path.join(pastaFeiticos, nomeArquivo)
+
+        if (!fs.existsSync(caminhoCompleto)){
+            throw new Error('Arquivo não encontrado.')
+        }
+
+        const conteudo = fs.readFileSync(caminhoCompleto, 'utf-8')
+        return conteudo
+    } catch (erro){
+        return {erro: erro.message}
     }
 })
 

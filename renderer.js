@@ -65,6 +65,25 @@ window.addEventListener('DOMContentLoaded', async () =>{
         })
     }
     
+    if (window.location.pathname.includes('exibirFeiticos.html')){
+        const params = new URLSearchParams(window.location.search)
+        const nomeFeitico = params.get('feitico')
+
+        const titulo = document.getElementById('titulo-feitico')
+        const conteudo = document.getElementById('conteudo-feitico')
+
+        if (nomeFeitico){
+            try {
+                const texto = await window.api.lerFeitico(`${nomeFeitico}.txt`)
+                conteudo.textContent = texto
+            } catch (erro){
+                conteudo.textContent = 'Erro ao carregar feitiço.'
+                console.error(erro)
+            }
+        } else {
+            conteudo.textContent = 'Feitiço não especificado.'
+        }
+    }
 })
 
 async function abrirArquivo() {
@@ -123,7 +142,14 @@ async function carregarFeiticos() {
 
     arquivos.forEach(el => {
         const li = document.createElement('li')
-        li.textContent = el.replace('.txt', '')
+        const nomeFeitico = el.replace('.txt', '')
+        const link = document.createElement('a')
+
+        link.textContent=nomeFeitico
+        link.href=`exibirFeiticos.html?feitico=${encodeURIComponent(nomeFeitico)}`
+        link.style.textDecoration='none'
+
+        li.appendChild(link)
         listaDeFeiticos.appendChild(li)
     })  
    
