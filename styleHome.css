@@ -76,7 +76,7 @@ button {
   position: absolute;
 }
 
-#fechar, #voltar{   
+#fechar, #voltar, #canalizar{   
   bottom:0;
   right:0;
 }
@@ -136,13 +136,18 @@ input[type=text], select{
   margin: 10px;
 }
 
-#componentes, #tags, #ritualistica{
+#componentes, #tags, #ritualistica, #clame-a-senhora-da-noite, #resposta-hecate{
   background: transparent;
   border: #fff 1px solid;
   border-radius: 5px;
   margin: 5px;
+  font-family: 'Inknut Antiqua', serif;
 }
 
+#resposta-hecate{
+  color: rgb(46, 2, 11);
+  flex: 1;
+}
 #componentes, #tags{
   display:flex;
   flex-direction: column;
@@ -180,4 +185,3 @@ input[type=text], select{
   width: 90%;
   flex: 0 0 auto;
 }
-

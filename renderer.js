@@ -44,6 +44,13 @@ window.addEventListener('DOMContentLoaded', async () =>{
         } )
     }
 
+    const linkClame = document.getElementById('link-clame')
+    if (linkClame){
+        linkClame.addEventListener('click', () =>{
+            window.api.irParaPagina('clame.html')
+        })
+    }
+
     const btnNovoFeitico = document.getElementById('novo-feitico')
     if (btnNovoFeitico){
         btnNovoFeitico.addEventListener('click', () => {
