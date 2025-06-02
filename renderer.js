@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', async () =>{
         })
     }
     carregarFeiticos()
-
+    carregarDiarios()
     const btnFechar = document.getElementById('fechar')
     if (btnFechar){
         btnFechar.addEventListener('click', () =>{
@@ -50,6 +50,13 @@ window.addEventListener('DOMContentLoaded', async () =>{
             window.api.irParaPagina('novoFeitico.html')
         })
     }
+
+    const btnNovoDiario = document.getElementById('novo-diario')
+    if (btnNovoDiario){
+        btnNovoDiario.addEventListener('click', () =>{
+            window.api.irParaPagina('novoDiario.html')
+        })
+    }
     
 })
 
@@ -62,6 +69,18 @@ async function abrirArquivo() {
     } else {
         document.getElementById('feitico').value=content
         document.getElementById('salvar-feitico').style.display='inline-block'
+    }
+}
+
+async function abrirDiario(){
+    const content = await window.api.abrirDiario()
+    if (content.cancelado){
+        console.log("cancelado")
+    } else if (content.erro){
+        console.error("Erro ao abrir o diário: ", content.erro)
+    } else {
+        document.getElementById('diario').value=content
+        document.getElementById('salvar-diario').style.display='inline-block'
     }
 }
 
@@ -99,6 +118,24 @@ async function carregarFeiticos() {
         const li = document.createElement('li')
         li.textContent = el.replace('.txt', '')
         listaDeFeiticos.appendChild(li)
-    });
+    })  
    
+}
+
+async function carregarDiarios(){
+    const listaDeDiarios = document.getElementById('lista-de-diarios')
+    const arquivos = await window.api.listarDiarios()
+    if (arquivos.erro){
+        listaDeDiarios.innerHTML= `<li>Erro: ${arquivos.erro}</li>`
+    }
+    if (arquivos.length === 0){
+        listaDeDiarios.innerHTML=`<li>Nenhum diário encontrado.</li>`
+    }
+    listaDeDiarios.innerHTML = ''
+
+    arquivos.forEach(el => {
+        const li = document.createElement('li')
+        li.textContent = el.replace('.txt', '')
+        listaDeDiarios.appendChild(li)
+    })
 }

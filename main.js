@@ -57,9 +57,26 @@ ipcMain.handle('abrir-feitico', async () =>{
     }
 })
 
+ipcMain.handle('abrir-diario', async () =>{
+    try {
+        const result = await dialog.showOpenDialog({
+            filters: [{name:'Diários', extensions: ['txt']}],
+            properties: ['openFile']
+        })
+
+        if (result.canceled || result.filePaths.length===0) return {cancelado:true}
+
+        const caminho = result.filePaths[0]
+        const conteudo = fs.readFileSync(caminho, 'utf8')
+        return conteudo
+    } catch (erro){
+        return {erro: erro.message}
+    }
+})
+
 ipcMain.handle('salvar-feitico', async (_, content) => {
     try {
-        const result = await dialog.showSaveDialog({
+        const result = await dialog.showOpenDialog({
             filters: [{name: 'Arquivos', extensions:['txt']}],
             defaultPath: 'feitico.txt'
         })
@@ -71,7 +88,22 @@ ipcMain.handle('salvar-feitico', async (_, content) => {
     }
 })
 
+ipcMain.handle('salvar-diario', async (_, content) =>{
+    try {
+        const result = await dialog.showOpenDialog({
+            filters: [{name: 'Diários', extensions:['txt']}],
+            defaultPath: 'diario.txt'
+        })
+        if (result.canceled) return {cancelado:true}
+        fs.writeFileSync(result.filePath, content, 'utf-8')
+        return {sucesso:true}
+    } catch(erro) {
+        return {erro: erro.message}
+    }
+})
+
 const pastaFeiticos = path.join(__dirname, 'feiticos')
+const pastaDiarios = path.join(__dirname, 'diarios')
 
 ipcMain.handle('listar-feiticos', async () => {
     try {
@@ -79,6 +111,15 @@ ipcMain.handle('listar-feiticos', async () => {
         return arquivos
     } catch (erro){
         return {erro: erro.message}
+    }
+})
+
+ipcMain.handle('listar-diarios', async () =>{
+    try {
+        const arquivos = fs.readdirSync(pastaDiarios).filter(nome => nome.endsWith('.txt'))
+        return arquivos
+    } catch (erro){
+        return{erro: erro.message}
     }
 })
 
