@@ -16,6 +16,7 @@ async function createMainWindow(){
         }
     })
     await mainWindow.loadFile('entrada.html')
+    server = require('./gemini.js')
 
     ipcMain.on('ir-para-pagina', (event, pagina)=>{
     if (mainWindow && pagina){
@@ -32,6 +33,11 @@ ipcMain.on('voltar-pagina', () =>{
 })
     
 }
+
+ipcMain.handle('invocar-hecate', async (event, oracao) =>{
+    const resposta = gerarRespostaDaSenhoraDaNoite(oracao)
+    return resposta
+})
 
 ipcMain.handle('get-password', () => {
     return process.env.PW
