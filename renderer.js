@@ -86,14 +86,14 @@ window.addEventListener('DOMContentLoaded', async () =>{
         const inputOracao = document.getElementById('clame-a-senhora-da-noite')
         const btnCanalizar = document.getElementById('canalizar')
         const respostaHecate = document.getElementById('resposta-hecate')
-        const paginas = document.querySelectorAll('.pagina')
+        // const paginas = document.querySelectorAll('.pagina')
         
-        function mostrarPagina(index){
-            paginas.forEach((pagina, i) =>{
-                pagina.style.display = i ===index? 'block':'none'
-            })
-        }
-        mostrarPagina(0)
+        // function mostrarPagina(index){
+        //     paginas.forEach((pagina, i) =>{
+        //         pagina.style.display = i ===index? 'block':'none'
+        //     })
+        // }
+        // mostrarPagina(0)
 
     if (inputOracao && btnCanalizar && respostaHecate) {
         btnCanalizar.addEventListener('click', async () =>{

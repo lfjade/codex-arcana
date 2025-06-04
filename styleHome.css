@@ -145,7 +145,12 @@ input[type=text], select{
   font-size: smaller;
   line-height: 1.5;
   white-space: pre-wrap;
+  color: white
 
+}
+
+#clame-a-senhora-da-noite{
+  flex:1;
 }
 
 #resposta-hecate{
