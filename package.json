@@ -1,7 +1,7 @@
 {
   "name": "atv-7-arquivos",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "./controle/main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -10,26 +10,29 @@
 <body>
     <div id="hero-grimorio">
         <div class = "pagina"> 
-            <h1>novo feitiço</h1>
+            <h1>novo diário</h1>
             <input id ="titulo" placeholder="título">
-            <h3>componentes</h3>
-            <div id = "componentes">
-                <input id = "inputComponentes" placeholder="pesquisar">
-
-            </div>
-            <h3>tags</h3>
-            <div id = "tags">
-                <input id = "inputTags" placeholder="pesquisar">
-
-            </div>
+            <input id = "ritualistica">
+            
         </div>
         <div class = "pagina">
-            <label for = "ritualistica" class="label-centralizado">ritualistica</label>
-            <input id = "ritualistica">
+            <div id = "data">
+                <p>dia I, mês I, ano 2025</p>
+                <p>dia de freiya</p>
+                <p>Quarto crescente</p>
+            </div>
+            <div id = "tags">
+                <div id = "form-linha">
+                    <label for ="tags">tags: </label>
+                    <input id = "inputTags" placeholder="pesquisar...">
+
+                </div>
+
+            </div>  
             <button id = "registrar">registrar</button>
             <button id = "voltar">cancelar</button>
         </div>
     </div>
-    <script src = "renderer.js"></script>
+    <script src = "../controle/renderer.js"></script>
 </body>
 </html>

@@ -1,21 +1,21 @@
 const {app, BrowserWindow, ipcMain, dialog} = require('electron')
 const path = require('path')
 const fs = require('fs')
-require('dotenv').config()
-
+require('dotenv').config({ path: __dirname + '/.env' })
+console.log('Senha carregada do .env:', process.env.PW);
 
 async function createMainWindow(){
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
+            preload: path.join(__dirname, '..', 'preload.js'),
             contextIsolation: true,
             nodeIntegration: false,
             additionalArguments: [`--PW=${process.env.PW}`]
         }
     })
-    await mainWindow.loadFile('entrada.html')
+    await mainWindow.loadFile(path.join(__dirname, '../apresentacao/entrada.html'))
     server = require('./gemini.js')
 
     ipcMain.on('ir-para-pagina', (event, pagina)=>{
