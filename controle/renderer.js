@@ -166,6 +166,8 @@ window.addEventListener('DOMContentLoaded', async () =>{
     }
 })
 
+
+// a partir daqui 
 async function abrirArquivo() {
     const content = await window.api.abrirArquivo()
     if (content.cancelado){
@@ -205,6 +207,7 @@ async function salvarArquivo(){
 }
 
 
+// ate ali se pa, vou tentar comentar tudo e ver se alguma coisa muda
 
 async function carregarFeiticos() {
     const listaDeFeiticos = document.getElementById('lista-de-feiticos')

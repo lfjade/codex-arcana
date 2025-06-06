@@ -20,7 +20,8 @@ async function createMainWindow(){
 
     ipcMain.on('ir-para-pagina', (event, pagina)=>{
     if (mainWindow && pagina){
-        mainWindow.loadFile(pagina)
+        const caminhoAbsoluto = path.join(__dirname, '..', 'apresentacao', pagina)
+        mainWindow.loadFile(caminhoAbsoluto)
     }
 
 })
@@ -108,8 +109,8 @@ ipcMain.handle('salvar-diario', async (_, content) =>{
     }
 })
 
-const pastaFeiticos = path.join(__dirname, 'feiticos')
-const pastaDiarios = path.join(__dirname, 'diarios')
+const pastaFeiticos = path.join(__dirname, '..', 'apresentacao', 'feiticos')
+const pastaDiarios = path.join(__dirname, '..', 'apresentacao', 'diarios')
 
 ipcMain.handle('listar-feiticos', async () => {
     try {
