@@ -3,3 +3,5 @@
 07/06/25 23:35 - Maioria da modularização já foi, só faltou a navegação que não vou me arriscar por enquanto pq to sem chat. Acho que agora posso começar a corrigir erros de JS e CSS.
 
 08/06/25 19:04 - Modularização ok, tem alguns erros de JS e CSS a ver
+        19:53 - ajustada função de edição de feitiços, mas por algum motivo só está funcionando a primeira edição. 
+                função de edição de diários iniciada, não está funcionando ainda. chat me abandonou.

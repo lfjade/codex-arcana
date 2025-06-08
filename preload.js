@@ -11,7 +11,7 @@ contextBridge.exposeInMainWorld('secure',{
 contextBridge.exposeInMainWorld('api', {
     abrirArquivo: () => ipcRenderer.invoke('abrir-feitico'),
     salvarFeitico: (nomeAntigo, novoTitulo, conteudo) => ipcRenderer.invoke('salvar-feitico', nomeAntigo, novoTitulo, conteudo),
-    salvarDiario: (nomeArquivo, novoTitulo, conteudo) => ipcRenderer.invoke('salvar-diario', nomeArquivo, novoTitulo, conteudo),
+    salvarDiario: (nomeAntigo, novoTitulo, conteudo) => ipcRenderer.invoke('salvar-diario', nomeAntigo, novoTitulo, conteudo),
     abrirDiario: () =>ipcRenderer.invoke('abrir-diario'),
     listarFeiticos: () => ipcRenderer.invoke('listar-feiticos'),
     listarDiarios: () => ipcRenderer.invoke('listar-diarios'),
