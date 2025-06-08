@@ -1,8 +1,8 @@
-const {app, BrowserWindow, ipcMain, dialog} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+const {pathToFileURL} = require('url')
 const fs = require('fs')
 require('dotenv').config({ path: __dirname + '/.env' })
-console.log('Senha carregada do .env:', process.env.PW);
 
 async function createMainWindow(){
     const mainWindow = new BrowserWindow({
@@ -18,10 +18,17 @@ async function createMainWindow(){
     await mainWindow.loadFile(path.join(__dirname, '../apresentacao/entrada.html'))
     server = require('./gemini.js')
 
-    ipcMain.on('ir-para-pagina', (event, pagina)=>{
+    ipcMain.on('ir-para-pagina', (event, pagina, queryParams= {})=>{
     if (mainWindow && pagina){
-        const caminhoAbsoluto = path.join(__dirname, '..', 'apresentacao', pagina)
-        mainWindow.loadFile(caminhoAbsoluto)
+        let caminhoAbsoluto = path.join(__dirname, '..', 'apresentacao', pagina)
+        let urlFinal = pathToFileURL(caminhoAbsoluto).href
+
+        const searchParams = new URLSearchParams(queryParams).toString()
+
+        if (searchParams){
+            urlFinal+=`?${searchParams}`
+        }
+        mainWindow.loadURL(urlFinal)
     }
 
 })
@@ -46,68 +53,7 @@ ipcMain.handle('get-password', () => {
 
 app.whenReady().then(createMainWindow)
 
-ipcMain.handle('abrir-feitico', async () =>{
-    try {
-        const result = await dialog.showOpenDialog({
-            filters: [{name: 'Arquivos', extensions: ['txt']}],
-            properties: ['openFile']
 
-        })
-
-        if (result.canceled || result.filePaths.length===0) return {cancelado:true}
-
-        const caminho = result.filePaths[0]
-        const conteudo = fs.readFileSync(caminho, 'utf-8')
-        return conteudo
-    } catch (erro){
-        return {erro: erro.message}
-    }
-})
-
-ipcMain.handle('abrir-diario', async () =>{
-    try {
-        const result = await dialog.showOpenDialog({
-            filters: [{name:'Diários', extensions: ['txt']}],
-            properties: ['openFile']
-        })
-
-        if (result.canceled || result.filePaths.length===0) return {cancelado:true}
-
-        const caminho = result.filePaths[0]
-        const conteudo = fs.readFileSync(caminho, 'utf8')
-        return conteudo
-    } catch (erro){
-        return {erro: erro.message}
-    }
-})
-
-ipcMain.handle('salvar-feitico', async (_, content) => {
-    try {
-        const result = await dialog.showOpenDialog({
-            filters: [{name: 'Arquivos', extensions:['txt']}],
-            defaultPath: 'feitico.txt'
-        })
-        if (result.canceled) return {cancelado: true}
-        fs.writeFileSync(result.filePath, content, 'utf-8')
-        return {sucesso:true}
-    } catch (erro){
-        return {erro: erro.message}
-    }
-})
-
-ipcMain.handle('salvar-diario', async (_, content) =>{
-    try {
-        const result = await dialog.showOpenDialog({
-            filters: [{name: 'Diários', extensions:['txt']}],
-            defaultPath: 'diario.txt'
-        })
-        if (result.canceled) return {cancelado:true}
-        fs.writeFileSync(result.filePath, content, 'utf-8')
-        return {sucesso:true}
-    } catch(erro) {
-        return {erro: erro.message}
-    }
-})
 
 const pastaFeiticos = path.join(__dirname, '..', 'apresentacao', 'feiticos')
 const pastaDiarios = path.join(__dirname, '..', 'apresentacao', 'diarios')
@@ -167,6 +113,22 @@ ipcMain.handle('ler-diario', async (_, nomeArquivo) => {
     }
 })
 
+ipcMain.handle('salvar-feitico', async (_, nomeArquivoAntigo, novoTitulo, novoConteudo) =>{
+    try {
+        const novoNomeArquivo=`${novoTitulo}.txt`
+        const caminhoAntigo = path.join(pastaFeiticos, nomeArquivoAntigo)
+        const caminhoNovo = path.join(pastaFeiticos, novoNomeArquivo)
+
+        if (nomeArquivoAntigo !== novoNomeArquivo){
+            fs.renameSync(caminhoAntigo, caminhoNovo)
+        }
+
+        fs.writeFileSync(caminhoNovo, novoConteudo, 'utf-8')
+        return {sucesso:true}
+    } catch (erro){
+        return {erro:erro.message}
+    }
+})
 
 
 ipcMain.on('fechar', () =>{

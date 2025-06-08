@@ -1,29 +1,9 @@
+import { configurarEntrada } from './renderer/entrada.js'
+
+//OBS: pensar naquele jeito de importar toda a pasta 
 window.addEventListener('DOMContentLoaded', async () =>{
-    const path = window.location.pathname
-
-
-    //controle de login
-
-    if(path.endsWith('entrada.html') || path ==='/' || path.endsWith('/')){
-        const pwInput = document.getElementById('pw')
-        if (!pwInput) return
-        
-        const expectedPw = await window.secure.getPw()
-        let timeout
-
-        pwInput.addEventListener('input', () =>{
-            clearTimeout(timeout)
-            
-            timeout=setTimeout(() =>{
-                if (pwInput.value === expectedPw){
-                    window.location.href='home.html'
-                }
-        
-            }, 500)
-
-        })
-    }
-
+    await configurarEntrada()
+const path = window.location.pathname;
     // config home
     if (path.endsWith('home.html')){
         const fraseWelcome = document.getElementById('frase-welcome')
@@ -87,13 +67,6 @@ window.addEventListener('DOMContentLoaded', async () =>{
         const btnCanalizar = document.getElementById('canalizar')
         const respostaHecate = document.getElementById('resposta-hecate')
         // const paginas = document.querySelectorAll('.pagina')
-        
-        // function mostrarPagina(index){
-        //     paginas.forEach((pagina, i) =>{
-        //         pagina.style.display = i ===index? 'block':'none'
-        //     })
-        // }
-        // mostrarPagina(0)
 
     if (inputOracao && btnCanalizar && respostaHecate) {
         btnCanalizar.addEventListener('click', async () =>{
@@ -164,50 +137,48 @@ window.addEventListener('DOMContentLoaded', async () =>{
             if (conteudo) conteudo.textContent = 'Diário não especificado.'
         }
     }
+
+    if (path.endsWith('novoFeitico.html')){
+
+        const params = new URLSearchParams(window.location.search)
+        const nomeArquivo = params.get('arquivo')
+    
+        if (!nomeArquivo){
+            console.error('Nenhum arquivo especificado na URL.')
+            return
+        }
+    
+        try {
+            const conteudo = await window.electron.invoke('ler-feitico', nomeArquivo)
+    
+            if (conteudo.erro){
+                console.error(conteudo.erro)
+            } else {
+                const titulo = nomeArquivo.replace(/\.txt$/, '')
+                document.getElementById('titulo-feitico').value = titulo
+            }
+        } catch (erro){
+            console.error('Erro inesperado: ', erro)
+        }
+    }
+
+    const btnRegistrar = document.getElementById('registrar')
+    if (btnRegistrar){
+        addEventListener('click', async () =>{
+        const novoTitulo = document.getElementById('titulo').value
+        const novoConteudo = document.getElementById('conteudo-feitico').value
+        })
+        if (resultado.sucesso) {
+            alert('oba')
+        } else {
+            alert ('putz')
+        }
+    }
+    
+    
 })
 
 
-// a partir daqui 
-async function abrirArquivo() {
-    const content = await window.api.abrirArquivo()
-    if (content.cancelado){
-        console.log("Cancelado.")
-    } else if (content.erro){
-        console.error("Erro ao abrir o arquivo: ", content.erro)
-    } else {
-        document.getElementById('feitico').value=content
-        document.getElementById('salvar-feitico').style.display='inline-block'
-    }
-}
-
-async function abrirDiario(){
-    const content = await window.api.abrirDiario()
-    if (content.cancelado){
-        console.log("cancelado")
-    } else if (content.erro){
-        console.error("Erro ao abrir o diário: ", content.erro)
-    } else {
-        document.getElementById('diario').value=content
-        document.getElementById('salvar-diario').style.display='inline-block'
-    }
-}
-
-async function salvarArquivo(){
-    const content = document.getElementById('feitico').value
-    const result = await window.api.salvarArquivo(content)
-
-    if (result.cancelado){
-        console.log("Salvamento cancelado.")
-    } else if(result.erro) {
-        console.error("Erro ao salvar: ", result.erro)
-    } else {
-        console.log("Arquivo salvo com sucesso!")
-        document.getElementById('salvar-feitico').style.display = 'none'
-    }
-}
-
-
-// ate ali se pa, vou tentar comentar tudo e ver se alguma coisa muda
 
 async function carregarFeiticos() {
     const listaDeFeiticos = document.getElementById('lista-de-feiticos')
