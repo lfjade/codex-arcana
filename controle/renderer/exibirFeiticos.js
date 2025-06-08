@@ -11,7 +11,7 @@ export default async function exibirFeiticos(){
         if (nomeFeitico){
             try {
                 const texto = await window.api.lerFeitico(`${nomeFeitico}.txt`)
-                if (titulo) titulo.textContent=nomeFeitico
+                if (titulo) titulo.value=nomeFeitico
                 if (conteudo) conteudo.textContent = texto
             } catch (erro){
                 if (conteudo) conteudo.textContent = 'Erro ao carregar feitiço.'

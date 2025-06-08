@@ -130,6 +130,23 @@ ipcMain.handle('salvar-feitico', async (_, nomeArquivoAntigo, novoTitulo, novoCo
     }
 })
 
+ipcMain.handle('salvar-diario', async(_, nomeArquivoAntigo, novoTitulo, novoConteudo)=>{
+    try {
+        const novoNomeArquivo=`${novoTitulo}.txt`
+        const caminhoAntigo = path.join(pastaDiarios, nomeArquivoAntigo)
+        const caminhoNovo = path.join(pastaDiarios, novoNomeArquivo)
+
+        if (nomeArquivoAntigo!==novoNomeArquivo){
+            fs.renameSync(caminhoAntigo, caminhoNovo)
+        }
+
+        fs.writeFileSync(caminhoNovo, novoConteudo, 'utf-8')
+        return {sucesso:true}
+    } catch (erro){
+        return {erro:erro.message}
+    }
+})
+
 
 ipcMain.on('fechar', () =>{
     app.quit()

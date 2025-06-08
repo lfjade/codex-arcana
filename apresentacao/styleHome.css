@@ -109,6 +109,9 @@ form{
 
 #componentes, #tags, #form-linha label, select, input{
   flex:1;
+  font-family: 'Inknut Antiqua', serif;
+  line-height: 1.0;
+  color:white;
 }
 
 input[type=text], select{
@@ -125,7 +128,7 @@ input[type=text], select{
   border-radius: 5px;
   width: fit-content;
   margin:5px auto 0;
-  padding: 0px 5px;
+  padding: -10px 5px;
 }
 
 .resultado-pesquisa, #conteudo-feitico, #conteudo-diario{
@@ -193,4 +196,12 @@ input[type=text], select{
   border-radius: 5px;
   width: 90%;
   flex: 0 0 auto;
+}
+
+#titulo-feitico, #titulo-diario{
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 5px;
 }
