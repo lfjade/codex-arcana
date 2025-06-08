@@ -1,4 +1,4 @@
-export async function exibirDiarios(){
+export default async function exibirDiarios(){
     const params = new URLSearchParams(window.location.search)
         const nomeDiario = params.get('diario')
 

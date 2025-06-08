@@ -1,4 +1,4 @@
-export async function clame(){
+export default async function clame(){
 
         const inputOracao = document.getElementById('clame-a-senhora-da-noite')
         const btnCanalizar = document.getElementById('canalizar')

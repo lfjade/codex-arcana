@@ -1,5 +1,4 @@
-
-export async function configurarEntrada(){
+export default async function configurarEntrada(){
     const path = window.location.pathname
 
     if(path.endsWith('entrada.html') || path ==='/' || path.endsWith('/')){

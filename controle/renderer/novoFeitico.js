@@ -1,4 +1,4 @@
-export async function novoFeitico(){
+export default async function novoFeitico(){
 
         const params = new URLSearchParams(window.location.search)
         const nomeArquivo = params.get('arquivo')

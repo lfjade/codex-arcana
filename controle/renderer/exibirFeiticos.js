@@ -1,4 +1,4 @@
-export async function exibirFeiticos(){
+export default async function exibirFeiticos(){
     if (!window.location.pathname.includes('exibirFeiticos.html')) return 
     
         const params = new URLSearchParams(window.location.search)

@@ -1,1 +1,5 @@
 06/06/25 22:34 - Tá, esse negócio começou a ficar difícil de controlar. O momento do desenvolvimento em que parei é na responsividade da página de edição, e tá se tornando bem confuso de trabalhar com um arquivo tão grande como o renderer. Então vou iniciar a modularização antes de seguir.
+
+07/06/25 23:35 - Maioria da modularização já foi, só faltou a navegação que não vou me arriscar por enquanto pq to sem chat. Acho que agora posso começar a corrigir erros de JS e CSS.
+
+08/06/25 19:04 - Modularização ok, tem alguns erros de JS e CSS a ver

@@ -1,4 +1,4 @@
-export async function carregarFeiticos() {
+export default async function carregarFeiticos() {
     const listaDeFeiticos = document.getElementById('lista-de-feiticos')
     if (!listaDeFeiticos) return
     const arquivos = await window.api.listarFeiticos()

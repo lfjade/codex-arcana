@@ -1,4 +1,4 @@
-export async function home(){
+export default async function home(){
     const fraseWelcome = document.getElementById('frase-welcome')
         if (fraseWelcome){
             fetch('http://localhost:3001/frase-welcome')

@@ -1,4 +1,4 @@
-export async function carregarDiarios(){
+export default async function carregarDiarios(){
     const listaDeDiarios = document.getElementById('lista-de-diarios')
     if (!listaDeDiarios) return
 
