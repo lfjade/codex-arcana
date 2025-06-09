@@ -29,10 +29,12 @@ export default async function exibirFeiticos(){
                 }
 
                 try {
-                    await window.api.salvarFeitico(`${novoTitulo}.txt`, novoConteudo)
+                    await window.api.salvarFeitico(
+                        nomeFeitico? `${nomeFeitico}.txt`:`${novoTitulo}.txt`, 
+                        novoTitulo, novoConteudo)
                     alert ("Feitiço salvo!")
                     if (!nomeFeitico){
-                        window.location.href=`exibirFeiticos.html?feitico=${encodeURIComponent(novoTitulo)}`
+                        window.api.irParaPagina('exibirFeiticos.html', {feitico: novoTitulo})
                     }
                 } catch (erro){
                     alert ("Erro ao salvar feitiço.")

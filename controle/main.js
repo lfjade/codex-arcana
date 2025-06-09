@@ -53,8 +53,6 @@ ipcMain.handle('get-password', () => {
 
 app.whenReady().then(createMainWindow)
 
-
-
 const pastaFeiticos = path.join(__dirname, '..', 'apresentacao', 'feiticos')
 const pastaDiarios = path.join(__dirname, '..', 'apresentacao', 'diarios')
 
@@ -146,7 +144,6 @@ ipcMain.handle('salvar-diario', async(_, nomeArquivoAntigo, novoTitulo, novoCont
         return {erro:erro.message}
     }
 })
-
 
 ipcMain.on('fechar', () =>{
     app.quit()

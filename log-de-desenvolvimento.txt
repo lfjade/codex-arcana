@@ -4,4 +4,6 @@
 
 08/06/25 19:04 - Modularização ok, tem alguns erros de JS e CSS a ver
         19:53 - ajustada função de edição de feitiços, mas por algum motivo só está funcionando a primeira edição. 
-                função de edição de diários iniciada, não está funcionando ainda. chat me abandonou.
+                função de edição de diários iniciada, não está funcionando ainda. chat me abandonou. Já comparei as funções mas não estou econtrando o erro, acho que minha dislexia me fodeu
+
+09/06/25 13:40 - putz acabei de lembrar que tem que colocar função pra deletar feitiços e diários x_x
