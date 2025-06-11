@@ -3,7 +3,6 @@ export default async function exibirDiarios(){
 
         const params = new URLSearchParams(window.location.search)
         const nomeDiario = params.get('diario')
-
         const titulo = document.getElementById('titulo-diario')
         const conteudo = document.getElementById('conteudo-diario')
         const btnRegistrar = document.getElementById('registrar')
@@ -20,13 +19,13 @@ export default async function exibirDiarios(){
         }
 
 
-        if (nomeDiario){
+        if (nomeDiario && titulo && conteudo){
             try{
                 const texto = await window.api.lerDiario(`${nomeDiario}.txt`)
-                if (titulo) titulo.value=nomeDiario
-                if (conteudo) conteudo.textContent=texto
+                itulo.value=nomeDiario
+                conteudo.value=texto
             } catch (erro){
-                if (conteudo) conteudo.textContent = 'Erro ao carregar diário.'
+                conteudo.value = 'Erro ao carregar diário.'
                 console.error(erro)
             }
         }
@@ -66,7 +65,7 @@ export default async function exibirDiarios(){
                     const resultado = await window.api.excluirArquivo(`${nomeDiario}.txt`, 'diario')
                     if (resultado.sucesso){
                         alert("Diário excluído.")
-                        window.api.irParaPagina('exibirDiarios.html')
+                        window.api.irParaPagina('diarios.html')
                     } else {
                         alert(`Erro ao excluir diário: ${resultado.erro}`)
                     }

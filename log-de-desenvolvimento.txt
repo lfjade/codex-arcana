@@ -11,3 +11,7 @@
 
 10/06/25 21:29 - tá... Não tô com vontade alguma de adicionar esses botões
                 Bom, botões on e excluir diário funcionando. A questão é que logo após excluir o diário ele tá ficando na exibirDiarios ao invés de Diários. Mudar isso. Fazer também pra feitiços.
+
+11/06/25 00:12 - putz o novo do diarios e do feitiços não ta funcionando é pra me FUDE
+                Acho que eles tão na antiga versão, depois tem que arrumar isso ai x_x
+                Also tem que arrumar aquela linha de segurança do electron e os avisos de arquivos não especificados
