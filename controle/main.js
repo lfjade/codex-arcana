@@ -145,6 +145,20 @@ ipcMain.handle('salvar-diario', async(_, nomeArquivoAntigo, novoTitulo, novoCont
     }
 })
 
+ipcMain.handle('excluir-arquivo', async (event, nomeArquivo, tipo) =>{
+    try{
+        const pasta = path.join(__dirname, '../apresentacao', tipo=== 'diario'? 'diarios' : 'feiticos')
+        const caminhoArquivo = path.join(pasta, nomeArquivo)
+
+        await fs.promises.unlink(caminhoArquivo)
+
+        return {sucesso:true}
+    } catch (erro){
+        console.error(`Erro ao excluir ${tipo}: `, erro)
+        return {sucesso: false, erro: erro.message}
+    }
+})
+
 ipcMain.on('fechar', () =>{
     app.quit()
 })

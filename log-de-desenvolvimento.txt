@@ -7,3 +7,7 @@
                 função de edição de diários iniciada, não está funcionando ainda. chat me abandonou. Já comparei as funções mas não estou econtrando o erro, acho que minha dislexia me fodeu
 
 09/06/25 13:40 - putz acabei de lembrar que tem que colocar função pra deletar feitiços e diários x_x
+        13:45 - começar ajuste de "segunda edição"
+
+10/06/25 21:29 - tá... Não tô com vontade alguma de adicionar esses botões
+                Bom, botões on e excluir diário funcionando. A questão é que logo após excluir o diário ele tá ficando na exibirDiarios ao invés de Diários. Mudar isso. Fazer também pra feitiços.

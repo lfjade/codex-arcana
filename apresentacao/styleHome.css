@@ -128,7 +128,7 @@ input[type=text], select{
   border-radius: 5px;
   width: fit-content;
   margin:5px auto 0;
-  padding: -10px 5px;
+  padding: 0px 5px;
 }
 
 .resultado-pesquisa, #conteudo-feitico, #conteudo-diario{
