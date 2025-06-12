@@ -152,13 +152,12 @@ input[type=text], select{
 
 }
 
-#clame-a-senhora-da-noite{
+#clame-a-senhora-da-noite, #resposta-hecate, #ritualistica{
   flex:1;
 }
 
 #resposta-hecate{
   color: rgb(46, 2, 11);
-  flex: 1;
 }
 #componentes, #tags{
   display:flex;
@@ -166,8 +165,6 @@ input[type=text], select{
   align-items: center;
   justify-content: flex-start;
 }
-
-
 
 .label-centralizado{
   display: block;

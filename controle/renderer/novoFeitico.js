@@ -1,5 +1,5 @@
 export default async function novoFeitico(){
-
+        if (!window.location.pathname.includes('novoFeitico.html')) return
         const params = new URLSearchParams(window.location.search)
         const nomeArquivo = params.get('arquivo')
     

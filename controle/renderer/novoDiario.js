@@ -1,5 +1,5 @@
 export default async function novoDiario(){
-    
+    if (!window.location.pathname.includes('novoDiario.html')) return
     const params = new URLSearchParams(window.location.search)
         const nomeArquivo = params.get('arquivo')
     

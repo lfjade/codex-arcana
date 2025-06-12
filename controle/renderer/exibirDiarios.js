@@ -22,7 +22,7 @@ export default async function exibirDiarios(){
         if (nomeDiario && titulo && conteudo){
             try{
                 const texto = await window.api.lerDiario(`${nomeDiario}.txt`)
-                itulo.value=nomeDiario
+                titulo.value=nomeDiario
                 conteudo.value=texto
             } catch (erro){
                 conteudo.value = 'Erro ao carregar diário.'
@@ -48,7 +48,7 @@ export default async function exibirDiarios(){
                         novoTitulo, novoConteudo)
                     alert ("Diário salvo!")
                     if (!nomeDiario){
-                        window.api.irParaPagina('exibirDiarios.html', {diario: novoTitulo})
+                        window.api.irParaPagina('diarios.html', {diario: novoTitulo})
                     }
                 } catch (erro){
                     alert ("Erro ao salvar diário.")

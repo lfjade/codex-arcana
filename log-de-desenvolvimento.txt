@@ -15,3 +15,6 @@
 11/06/25 00:12 - putz o novo do diarios e do feitiços não ta funcionando é pra me FUDE
                 Acho que eles tão na antiga versão, depois tem que arrumar isso ai x_x
                 Also tem que arrumar aquela linha de segurança do electron e os avisos de arquivos não especificados
+
+12/06/25 03:17 - inclusão da meta tag de segurança nas páginas acabou recusando a fonte. To sem chat, então não consigo ver como resolver mas gostaria
+                removido erro de nenhum arquivo especificado encapsulando as funções de novoDiario e novoFeitico
