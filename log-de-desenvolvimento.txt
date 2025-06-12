@@ -18,3 +18,4 @@
 
 12/06/25 03:17 - inclusão da meta tag de segurança nas páginas acabou recusando a fonte. To sem chat, então não consigo ver como resolver mas gostaria
                 removido erro de nenhum arquivo especificado encapsulando as funções de novoDiario e novoFeitico
+                novoDiario.js ok mas vou ter que verificar as funções de preload, pq to tentando reutilizar a salvarDiario mas ta configurada pra receber um parametro "tituloantigo" e nesse módulo não tem isso
