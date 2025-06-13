@@ -114,10 +114,10 @@ ipcMain.handle('ler-diario', async (_, nomeArquivo) => {
 ipcMain.handle('salvar-feitico', async (_, nomeArquivoAntigo, novoTitulo, novoConteudo) =>{
     try {
         const novoNomeArquivo=`${novoTitulo}.txt`
-        const caminhoAntigo = path.join(pastaFeiticos, nomeArquivoAntigo)
         const caminhoNovo = path.join(pastaFeiticos, novoNomeArquivo)
 
-        if (nomeArquivoAntigo !== novoNomeArquivo){
+        if (nomeArquivoAntigo){
+            const caminhoAntigo = path.join(pastaFeiticos, nomeArquivoAntigo)
             fs.renameSync(caminhoAntigo, caminhoNovo)
         }
 
